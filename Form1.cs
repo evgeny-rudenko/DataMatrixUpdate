@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
-
+using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace DataMatrixUpdate
 {
@@ -165,7 +166,11 @@ namespace DataMatrixUpdate
             
             string SQLQuery = File.ReadAllText("KIZGoods.SQL");
             SQLQuery =  SQLQuery.Replace("GOODNAMESEARCH", "%"+tbGood.Text+"%");
+            SQLQuery = SQLQuery.Replace("LOTBARCODESEARCH", "%" + txtLotBarcode.Text + "%");
+            
 
+
+            rtbQuery.Clear();
             rtbQuery.AppendText(SQLQuery);
             DataTable kiz = fillDataTable(SQLQuery);
             this.gridKiz.DataSource = kiz;
@@ -185,6 +190,32 @@ namespace DataMatrixUpdate
         private void tbGood_TextChanged(object sender, EventArgs e)
         {
            
+        }
+
+        private void gridKiz_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string kiz_str = this.gridKiz.Rows[this.gridKiz.CurrentRow.Index].Cells["KIZ_STR"].Value.ToString();
+            System.Windows.Forms.Clipboard.SetText(kiz_str);
+        }
+
+
+        // import the function in your class
+        [DllImport("User32.dll")]
+        static extern int SetForegroundWindow(IntPtr point);
+        
+
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+            Process p = Process.GetProcessesByName("notepad").FirstOrDefault();
+            if (p != null)
+            {
+                IntPtr h = p.MainWindowHandle;
+                SetForegroundWindow(h);
+                SendKeys.SendWait("k");
+            }
+
         }
     }
 }

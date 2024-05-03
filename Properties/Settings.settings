@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="ConnectionString" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=localhost;Initial Catalog=eplus_work;User ID=sa;Password=Qq123;</Value>
+      <Value Profile="(Default)">Data Source=amdhome;Initial Catalog=Rigla_90045;User ID=sa;Password=Qq123;</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 // Можно задать все значения или принять номера сборки и редакции по умолчанию 
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.36.36")]
-[assembly: AssemblyFileVersion("1.2021.0614.2333")]
+[assembly: AssemblyVersion("1.0.45.45")]
+[assembly: AssemblyFileVersion("1.2021.1104.0005")]
 
-[assembly: AssemblyInformationalVersion("1.0.36")]
+[assembly: AssemblyInformationalVersion("1.0.45")]
